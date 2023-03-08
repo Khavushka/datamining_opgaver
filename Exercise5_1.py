@@ -1,53 +1,24 @@
-'''
-Exercises 5.1
-'''
-# Importing libraries
-from sklearn.metrics import silhouette_score
-from sklearn.cluster import KMeans
+# '''
+# Exercises 5.1
+# '''
+# # Importing libraries
 
-# Tabel 1
-#Define datapunkterne 
-tabel1 = [[10,1],[2,3], [3,4], [1,5], [1,7], [6,8], [7,8], [7,9]]
+import numpy as np
 
-#Vi har to forskellige cluster
-kmeans_model = KMeans(n_clusters=2)
+# Define data points and corresponding labels
+X = np.array([[10,1],[2,3], [3,4], [1,5], [7,7], [6,8], [7,8], [7,9]])
+labels1 = np.array([1, 1, 1, 1, 0, 0, 0, 0])
+labels2 = np.array([1, 0, 0, 0, 0, 0, 0, 0])
+labels3 = np.array([0, 1, 1, 1, 0, 0, 0, 0])
 
-# Cluster the data and obtain the cluster 
-labels = kmeans_model.fit_predict(tabel1)
+# Compute TD^2 for each label array
+for labels in [labels1, labels2, labels3]:
+    centroids = []
+    for i in np.unique(labels):
+        centroids.append(np.mean(X[labels == i], axis=0))
 
-silhouette_coefficient = silhouette_score(tabel1, labels)
-print('Silhouette_coefficient fra tabel 1:', silhouette_coefficient)
+    TD_squared = 0
+    for i in range(len(X)):
+        TD_squared += np.linalg.norm(X[i] - centroids[labels[i]]) ** 2
 
-# Svar: silhouette_coefficient: 0.49610653006282945
-
-
-# Tabel 2
-
-tabel2 = [[10,1],[2, 3], [3,4], [1,4], [7,7], [6,8], [7,8], [7,9]]
-
-#Vi har to forskellige cluster
-kmeans_model = KMeans(n_clusters=2)
-
-# Cluster the data and obtain the cluster 
-labels = kmeans_model.fit_predict(tabel2)
-
-silhouette_coefficient = silhouette_score(tabel2, labels)
-print('silhouette_coefficient fra tabel 2:', silhouette_coefficient)
-
-# Svar: silhouette_coefficient fra tabel 2: 0.571443656751857
-
-# Tabel 3
-
-tabel3 = [[10,1],[2,3], [3,4], [1,5], [7,7], [6,8], [7,8], [7,9]]
-
-#Vi har to forskellige cluster
-kmeans_model = KMeans(n_clusters=2)
-
-# Cluster the data and obtain the cluster 
-labels = kmeans_model.fit_predict(tabel3)
-
-silhouette_coefficient = silhouette_score(tabel3, labels)
-print('silhouette_coefficient fra tabel 3:', silhouette_coefficient)
-
-# Svar: silhouette_coefficient fra tabel 3: 0.5467209394773982
-
+    print("The TD^2 value for labels", labels, "is:", TD_squared)
