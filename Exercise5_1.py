@@ -1,7 +1,7 @@
 '''
  Exercises 5.1
 '''
-# # Importing libraries
+# Importing libraries
 import numpy as np
 
 # Define data points and corresponding labels
