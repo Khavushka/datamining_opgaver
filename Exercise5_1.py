@@ -1,6 +1,6 @@
-# '''
-# Exercises 5.1
-# '''
+'''
+ Exercises 5.1
+'''
 # # Importing libraries
 
 import numpy as np
@@ -22,3 +22,10 @@ for labels in [labels1, labels2, labels3]:
         TD_squared += np.linalg.norm(X[i] - centroids[labels[i]]) ** 2
 
     print("The TD^2 value for labels", labels, "is:", TD_squared)
+
+'''
+Svar:
+The TD^2 value for labels [1 1 1 1 0 0 0 0] is: 61.5
+The TD^2 value for labels [1 0 0 0 0 0 0 0] is: 72.85714285714285
+The TD^2 value for labels [0 1 1 1 0 0 0 0] is: 54.400000000000006
+'''
