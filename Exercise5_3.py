@@ -122,5 +122,8 @@ for n_clusters in range_n_clusters:
         fontsize=14,
         fontweight="bold",
     )
+km = KMeans(n_clusters=n_clusters, init='k-means++', max_iter=100, n_init=10,
+            verbose=0, random_state=42, tol=1e-4)
+
 
 plt.show()

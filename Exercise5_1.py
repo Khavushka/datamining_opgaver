@@ -2,7 +2,6 @@
  Exercises 5.1
 '''
 # # Importing libraries
-
 import numpy as np
 
 # Define data points and corresponding labels
@@ -17,7 +16,7 @@ TD^2 -værdien er et mål for spredningen af datapunkterne omkring deres centroi
 Beregner summen af de kvadrerede afstande mellem hvert datapunkt og dets tildelts tyngdepunkt.
 '''
 
-# Loop går gennem hvert label og bergenerpunkterne ved hjælp af funktionen np.mean
+# Loop går gennem hvert label og beregnerpunkterne ved hjælp af funktionen np.mean
 for labels in [labels1, labels2, labels3]:
     centroids = []
     # Looper igennem hvert datapunkt i X
