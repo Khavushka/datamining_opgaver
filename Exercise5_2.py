@@ -19,10 +19,12 @@ for k in k_values:
         # Assign each data point to the closest centroid
         distances = np.sqrt(((X - centroids[:, np.newaxis])**2).sum(axis=2))
         labels = np.argmin(distances, axis=0)
+        # print(X)
 
         # Update centroids
         for j in range(k):
             centroids[j] = X[labels == j].mean(axis=0)
+    print(centroids)
     
     # Compute TD2 
     td2 = ((X - centroids[labels])**2).sum() / X.shape[0]

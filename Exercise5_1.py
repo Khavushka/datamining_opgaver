@@ -3,6 +3,8 @@
 '''
 # Importing libraries
 import numpy as np
+from sklearn.metrics import silhouette_score
+
 
 # Define data points and corresponding labels
 X = np.array([[10,1],[2,3], [3,4], [1,5], [7,7], [6,8], [7,8], [7,9]])
@@ -29,6 +31,11 @@ for labels in [labels1, labels2, labels3]:
     # Udskriver TD^2 værdien for hvert punkt sammen med det tilsvarende sæt label
     print("The TD^2 value for labels", labels, "is:", TD_squared)
 
+for sil in [labels1, labels2, labels3]:
+    silhouette = []
+    for i in sil:
+        silhouette = silhouette_score(X, sil)
+    print("The silhouette:", silhouette)
 '''
 Svar:
 The TD^2 value for labels [1 1 1 1 0 0 0 0] is: 61.5
