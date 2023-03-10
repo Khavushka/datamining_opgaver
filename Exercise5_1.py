@@ -3,7 +3,7 @@
 '''
 # Importing libraries
 import numpy as np
-from sklearn.metrics import silhouette_score
+from sklearn.metrics import silhouette_samples, silhouette_score
 
 # Define data points and corresponding labels
 X = np.array([[10,1],[2,3], [3,4], [1,5], [7,7], [6,8], [7,8], [7,9]])
