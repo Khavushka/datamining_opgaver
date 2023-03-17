@@ -12,12 +12,12 @@ test_point = np.array([6, 6])
 
 # Define the value of k
 # k = 4
-k = 7
-# k = 10
+# k = 7
+k = 10
 
-# Beregn Manhattan-afstandene mellem testpunktet og alle datapunkter
+# Beregn Manhattan-afstandene mellem testpunktet og -alle datapunkter
 distances = [cityblock(test_point, x) for x in X]
-print(distances)
+# print(distances)
 
 # Få indeksene for de k nærmeste naboer
 knn_indices = np.argsort(distances)[:k]
