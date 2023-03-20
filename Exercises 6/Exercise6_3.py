@@ -29,7 +29,5 @@ knn_labels = [y[i] for i in knn_indices]
 label_counts = Counter(knn_labels)
 
 # Tildel testpunktet til majoritetsklassen blandt de k nærmeste naboer
-predicted_class = label_counts.most_common(1)[0][0]
-
-# Print 
+predicted_class = label_counts.most_common(1)[0][0] 
 print('The predicted class of the query point is:', predicted_class)
