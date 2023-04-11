@@ -27,8 +27,6 @@ How does the shape of the probability distribution develop with increasing n?
 #     axs[i].set_title(f"Sum of {i+1} dice")
 # plt.show()
 
-
-
 # 2 solution
 import numpy as np
 import matplotlib.pyplot as plt
