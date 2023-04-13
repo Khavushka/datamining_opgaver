@@ -1,37 +1,36 @@
-import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.metrics import silhouette_score
-from sklearn.cluster import AgglomerativeClustering
-from sklearn.cluster import KMeans
-from sklearn.cluster import DBSCAN
+from sklearn.cluster import KMeans, DBSCAN
+from sklearn.mixture import GaussianMixture
 
-# load the dataset
-df = pd.read_csv('data.txt', sep='\t', header=None)
-# plt.scatter(df[0], df[1], s=5)
-# # plt.show()
+# Load data from URL
+url = "https://cs.joensuu.fi/sipu/datasets/spiral.txt"
+data = np.loadtxt(url)
 
-# # implement K-means clustering algorithm on the dataset
-# kmeans = KMeans(n_clusters=2, random_state=0)
-# labels = kmeans.fit_predict(df)
-# plt.scatter(df[0], df[1], c=labels, s=5)
-# # plt.show()
+# K-means clustering
+kmeans = KMeans(n_clusters=3, random_state=0).fit(data)
+kmeans_labels = kmeans.labels_
 
-# # implement DBSCAN clustering 
-# dbscan = DBSCAN(eps=0.2, min_samples=10)
-# labels = dbscan.fit_predict(df)
-# plt.scatter(df[0], df[1], c=labels, s=5)
-# # plt.show()
+# DBSCAN clustering
+dbscan = DBSCAN(eps=1, min_samples=3).fit(data)
+dbscan_labels = dbscan.labels_
 
-# # implement Agglomerative clustering
-agglo = AgglomerativeClustering(n_clusters=2)
-labels = agglo.fit_predict(df)
-plt.scatter(df[0], df[1], c=labels, s=5)
+# EM-clustering
+em = GaussianMixture(n_components=3, random_state=0).fit(data)
+em_labels = em.predict(data)
+
+# Plot results
+plt.figure(figsize=(12, 4))
+plt.subplot(1, 3, 1)
+plt.scatter(data[:, 0], data[:, 1], c=kmeans_labels)
+plt.title("K-means clustering")
+
+plt.subplot(1, 3, 2)
+plt.scatter(data[:, 0], data[:, 1], c=dbscan_labels)
+plt.title("DBSCAN clustering")
+
+plt.subplot(1, 3, 3)
+plt.scatter(data[:, 0], data[:, 1], c=em_labels)
+plt.title("EM-clustering")
+
 plt.show()
-
-# algorithms for he dataset
-
-# algorithm of quality changing params
-
-# measures fit io the structure in the dataset
-
-# measures a systematic preference for aome of the algorithms
