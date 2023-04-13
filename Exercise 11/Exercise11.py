@@ -27,3 +27,11 @@ agglo = AgglomerativeClustering(n_clusters=2)
 labels = agglo.fit_predict(df)
 plt.scatter(df[0], df[1], c=labels, s=5)
 plt.show()
+
+# algorithms for he dataset
+
+# algorithm of quality changing params
+
+# measures fit io the structure in the dataset
+
+# measures a systematic preference for aome of the algorithms
