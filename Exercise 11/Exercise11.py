@@ -12,7 +12,7 @@ kmeans = KMeans(n_clusters=3, random_state=0).fit(data)
 kmeans_labels = kmeans.labels_
 
 # DBSCAN clustering
-dbscan = DBSCAN(eps=1, min_samples=3).fit(data)
+dbscan = DBSCAN(eps=2, min_samples=3).fit(data)
 dbscan_labels = dbscan.labels_
 
 # EM-clustering

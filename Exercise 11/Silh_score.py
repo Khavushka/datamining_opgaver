@@ -14,7 +14,7 @@ kmeans_labels = kmeans.fit_predict(data)
 kmeans_score = silhouette_score(data, kmeans_labels)
 
 # DBSCAN clustering
-dbscan = DBSCAN(eps=1, min_samples=3)
+dbscan = DBSCAN(eps=2, min_samples=3)
 dbscan_labels = dbscan.fit_predict(data)
 dbscan_score = silhouette_score(data, dbscan_labels)
 
