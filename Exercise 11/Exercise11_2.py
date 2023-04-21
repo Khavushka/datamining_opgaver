@@ -66,7 +66,7 @@ kmeans = KMeans(n_clusters=3, random_state=42)
 dbscan = DBSCAN(eps=2, min_samples=3)
 gmm = GaussianMixture(n_components=3, random_state=42)
 
-# PCA-for at reducere dimensionalitet
+# PCA- for at reducere dimensionalitet
 pca = PCA(n_components=3)
 X_pca = pca.fit_transform(X_scaled)
 
@@ -89,17 +89,17 @@ fig= plt.figure(figsize=(15, 5))
 # K-means clustering
 ax = fig.add_subplot(131, projection='3d')
 ax.scatter(X_pca[:, 0], X_pca[:, 1], X_pca[:, 2], c=kmeans_labels)
-ax.set_title("K-Means Clustering")
+ax.set_title(f"K-means (score={kmeans_score:.3f})")
 
 # DBSCAN clustering
 ax = fig.add_subplot(132, projection='3d')
 ax.scatter(X_pca[:, 0], X_pca[:, 1], X_pca[:, 2], c=dbscan_labels)
-ax.set_title("DBSCAN Clustering")
+ax.set_title(f"DBSCAN (score={dbscan_score:.3f})")
 
 # EM clustering
 ax = fig.add_subplot(133, projection='3d')
 ax.scatter(X_pca[:, 0], X_pca[:, 1], X_pca[:, 2], c=gmm_labels)
-ax.set_title("EM Clustering")
+ax.set_title(f"EM-clustering (score={gmm_score:.3f})")
 plt.show()
 
 # Her printer vi silhouette-score ud
