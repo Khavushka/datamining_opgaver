@@ -38,7 +38,8 @@ dbscan_score = silhouette_score(X_scaled, dbscan_labels) if -1 not in dbscan_lab
 gmm_score = silhouette_score(X_scaled, gmm_labels)
 
 # Plot results
-fig= plt.figure(figsize=(15, 5))
+fig= plt.figure("Wine-datasets", figsize=(15, 5))
+
 # K-means clustering
 ax = fig.add_subplot(131, projection='3d')
 ax.scatter(X_pca[:, 0], X_pca[:, 1], X_pca[:, 2], c=kmeans_labels)
@@ -56,9 +57,17 @@ ax.set_title(f"EM-clustering (score={gmm_score:.3f})")
 plt.show()
 
 # Her printer vi silhouette-score ud
-print("Silhouette-score for K-means: ", kmeans_score)
-print("Silhouette-score for DBSCAN: ", dbscan_score)
-print("Silhouette-score for EM-clustering: ", gmm_score)
+print(f"K-means score: {kmeans_score:.3f}")
+print(f"DBSCAN score: {dbscan_score:.3f}")
+print(f"EM-clustering score: {gmm_score:.3f}")
+
+
+
+
+
+
+
+
 
 
 # import numpy as np
