@@ -37,6 +37,7 @@ kmeans_score = silhouette_score(X_scaled, kmeans_labels)
 dbscan_score = silhouette_score(X_scaled, dbscan_labels) if -1 not in dbscan_labels else np.nan
 gmm_score = silhouette_score(X_scaled, gmm_labels)
 
+
 # Plot results
 fig= plt.figure("Wine-datasets", figsize=(15, 5))
 
