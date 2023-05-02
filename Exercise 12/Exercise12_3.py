@@ -39,7 +39,7 @@ knn_acc = accuracy_score(y_test, knn_pred)
 print("k-NN:", knn_acc)
 
 
-# Der her er ikke noget til opgaven, mere til at afprøve noget ting
+
 clf_entropy = DecisionTreeClassifier(
     criterion = "entropy",
     random_state = 100,
