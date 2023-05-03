@@ -27,3 +27,7 @@ print('Accuracy:', accuracy)
 sample = [[5.1, 3.5, 1.4, 0.2]]
 prediction = model.predict(sample)
 print('Prediction:', prediction)
+
+'''
+Output Prediction: [0] betyder, at den trænede Naive Bayes -classifier har forudsagt, at den nye stikprøve af data tilhører den første klasse i Iris-datasættet, som er setosa-class
+'''
