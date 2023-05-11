@@ -16,6 +16,15 @@ url = "http://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wi
 
 df = pd.read_csv(url, header=None)
 df.drop(0, axis=1, inplace=True) #dropper ID column
-
-X = df.iloc[:, 1:].values
+X = df.iloc[:, 1:].values # separate target fra input 
 y = df.iloc[:, 0].values
+
+# Logistisk regression
+
+
+
+# Decision tree
+
+
+
+# SVM - support vector machine
