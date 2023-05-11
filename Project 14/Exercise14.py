@@ -1,55 +1,30 @@
-import pandas as pd
 import numpy as np
+import pandas as pd
+from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPClassifier
 from sklearn.svm import SVC
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, confusion_matrix
 
 
-import pandas as pd
+# Load the Autism-Adult-Data dataset
+data1 = pd.read_csv("http://archive.ics.uci.edu/ml/machine-learning-databases/00426/Autism-Adult-Data.arff", header=None)
+# data1 = data1.drop([0, 19, 20, 21, 22], axis=1)  # Remove unnecessary columns
+# data1 = data1.replace('?', np.nan).dropna()  # Remove missing values
+# X1 = preprocessing.scale(data1.iloc[:, :-1].values)  # Normalize features
+# y1 = data1.iloc[:, -1].values  # Target variable
+print(data1)
 
-# Henter Breast Cancer dataset
-bcw_df = pd.read_csv("http://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/wdbc.data", header=None)
-
-# bcw_df = pd.read_csv(url, header=None)
-# df.drop(0, axis=1, inplace=True) #dropper ID column
-# X = df.iloc[:, 1:].values # separate target fra input 
-# y = df.iloc[:, 0].values
-bcw_X = bcw_df.iloc[:, 2:].values
-bcw_y = bcw_df.iloc[:, 1].values
-print(bcw_df.head())
-
-# Henter Bascketball dataset
-bb_df = pd.read_csv('https://archive.ics.uci.edu/ml/machine-learning-databases/00341/Huge%20Stock%20Market%20Dataset/basketball.csv')
-bb_X = bb_df.iloc[:, :-1].values
-bb_y = bb_df.iloc[:, -1].values
-print(bb_df.header())
-
-# Spliter Breast Cancer Wisconsin dataset into training og testing sets
-# bcw_X_train, bcw_X_test, bcw_y_train, bcw_y_test = train_test_split(bcw_X, bcw_y, test_size=0.2, random_state=42)
-
-# Spliter Basketball dataset into training og testing sets
-# bb_X_train, bb_X_test, bb_y_train, bb_y_test = train_test_split(bb_X, bb_y, test_size=0.2, random_state=42)
-
-# Create and train a neural network model on the Breast Cancer Wisconsin dataset
-
-
-# Create and train a support vector machine model on the Breast Cancer Wisconsin dataset
-
-
-# Create and train a neural network model on the Basketball dataset
-
-
-# Create and train a support vector machine model on the Basketball dataset
+# Load the Breast Cancer Wisconsin dataset
+data2 = pd.read_csv("http://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/wdbc.data", header=None)
+# data2 = data2.drop([0], axis=1)  # Remove unnecessary column
+# X2 = preprocessing.scale(data2.iloc[:, 1:].values)  # Normalize features
+# y2 = data2.iloc[:, 0].values  # Target variable
+print(data2)
 
 
 
-# Logistisk regression
 
 
-
-# Decision tree
-
-
-
-# SVM - support vector machine
+# df1 = df1.drop(['age_desc', 'result', 'age'], axis=1) # drop unnecessary columns
+# df1 = df1.replace({'?': np.nan}).dropna() # drop rows with missing values
