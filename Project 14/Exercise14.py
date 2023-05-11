@@ -11,5 +11,9 @@ from sklearn.metrics import accuracy_score
 
 import pandas as pd
 
-url = 'http://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/wdbc.data'
+# Henter data vha url
+url = "http://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/wdbc.data"
+
 df = pd.read_csv(url, header=None)
+df.drop(0, axis=1, inplace=True) #dropp
+
