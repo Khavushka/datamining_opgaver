@@ -1,36 +1,47 @@
 import pandas as pd
-import numpy as np
+from sklearn.datasets import load_breast_cancer
+from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.neural_network import MLPClassifier
-from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
+from sklearn.neural_network import MLPClassifier
 
-# Henter data
-data = pd.read_csv('wdbc.csv', header=None)
-X = data.iloc[:, 2:].values
-y = data.iloc[:, 1].values
+data = load_breast_cancer()
+dataset = pd.DataFrame(data=data['data'], columns=data['feature_names'])
+# print(dataset)
 
-# Split data til training og testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+X = dataset.copy()
+y = data['target']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)
 
-# Decision tree classifier
-dt = DecisionTreeClassifier(random_state=42)
-dt.fit(X_train, y_train)
-dt_pred = dt.predict(X_test)
-dt_acc = accuracy_score(y_test, dt_pred)
-print("Decision Tree accuracy:", dt_acc)
+# Decision Tree Classifier
+clf = DecisionTreeClassifier(ccp_alpha=0.01)
+clf = clf.fit(X_train, y_train)
+clf.get_params()
+clf_pred = clf.predict(X_test)
+clf.predict_proba(X_test)
+dt_acc = accuracy_score(y_test, clf_pred)
+# print("Decision tree accuracy:", dt_acc)
+print(clf_pred)
+
 
 # Random forest classifier
-rf = RandomForestClassifier(n_estimators=100, random_state=42)
+rf = RandomForestClassifier(n_estimators=100, random_state=0)
 rf.fit(X_train, y_train)
 rf_pred = rf.predict(X_test)
 rf_acc = accuracy_score(y_test, rf_pred)
-print("Random Forest accuracy:", rf_acc)
+# print("Random Forest accuracy:", rf_acc)
 
 # Neural network classifier
 nn = MLPClassifier(hidden_layer_sizes=(100,), random_state=42)
 nn.fit(X_train, y_train)
 nn_pred = nn.predict(X_test)
 nn_acc = accuracy_score(y_test, nn_pred)
-print("Neural Network accuracy:", nn_acc)
+# print("Neural Network accuracy:", nn_acc)
+
+print("Cancer data set  dimensions: {}".format(dataset.shape))
+print(dataset.head())
+results=pd.DataFrame({"Model": ["Decision Tree", "Random Forest", "Neural Network"],
+    "Accuracy": [dt_acc, rf_acc, nn_acc]})
+print(results)
+
