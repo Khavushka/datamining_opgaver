@@ -5,6 +5,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.neural_network import MLPClassifier
+import matplotlib.pyplot as plt
 
 data = load_breast_cancer()
 dataset = pd.DataFrame(data=data['data'], columns=data['feature_names'])
@@ -26,7 +27,7 @@ print(clf_pred)
 
 
 # Random forest classifier
-rf = RandomForestClassifier(n_estimators=100, random_state=0)
+rf = RandomForestClassifier(n_estimators=100, max_depth=5, random_state=1)
 rf.fit(X_train, y_train)
 rf_pred = rf.predict(X_test)
 rf_acc = accuracy_score(y_test, rf_pred)
@@ -45,3 +46,11 @@ results=pd.DataFrame({"Model": ["Decision Tree", "Random Forest", "Neural Networ
     "Accuracy": [dt_acc, rf_acc, nn_acc]})
 print(results)
 
+
+models = ["Decision Tree", "Random Forest", "Neural Network"]
+accuracy = [dt_acc, rf_acc, nn_acc]
+plt.bar(models, accuracy)
+plt.title("Accuracy Scores for Breast Cancer Dataset")
+plt.xlabel("Model")
+plt.ylabel("Accuracy")
+plt.show()
