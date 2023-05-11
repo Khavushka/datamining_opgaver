@@ -15,5 +15,7 @@ import pandas as pd
 url = "http://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/wdbc.data"
 
 df = pd.read_csv(url, header=None)
-df.drop(0, axis=1, inplace=True) #dropp
+df.drop(0, axis=1, inplace=True) #dropper ID column
 
+X = df.iloc[:, 1:].values
+y = df.iloc[:, 0].values
