@@ -24,20 +24,20 @@ dtc = dtc.fit(X_train, y_train)
 fig = plt.figure(figsize=(25,20))
 _ = tree.plot_tree(dtc, 
                     filled=True)
-# y_pred = dtc.predict(X_test)
-# dtc_acc = accuracy_score(y_test, y_pred)
-# # print(f"Decision Tree Classifier Accuracy: {dtc_acc:.3f}")
+y_pred = dtc.predict(X_test)
+dtc_acc = accuracy_score(y_test, y_pred)
+# print(f"Decision Tree Classifier Accuracy: {dtc_acc:.3f}")
 
-# # Train and evaluate Random Forest Classifier
-# rfc = RandomForestClassifier()
-# rfc.fit(X_train, y_train)
-# y_pred = rfc.predict(X_test)
-# rfc_acc = accuracy_score(y_test, y_pred)
-# print(f"Random Forest Classifier Accuracy: {rfc_acc:.3f}")
+# Train and evaluate Random Forest Classifier
+rfc = RandomForestClassifier()
+rfc.fit(X_train, y_train)
+y_pred = rfc.predict(X_test)
+rfc_acc = accuracy_score(y_test, y_pred)
+print(f"Random Forest Classifier Accuracy: {rfc_acc:.3f}")
 
-# # Train and evaluate Neural Network Classifier
-# nnc = MLPClassifier(hidden_layer_sizes=(50, 50), max_iter=1000)
-# nnc.fit(X_train, y_train)
-# y_pred = nnc.predict(X_test)
-# nnc_acc = accuracy_score(y_test, y_pred)
-# print(f"Neural Network Classifier Accuracy: {nnc_acc:.3f}")
+# Train and evaluate Neural Network Classifier
+nnc = MLPClassifier(hidden_layer_sizes=(50, 50), max_iter=1000)
+nnc.fit(X_train, y_train)
+y_pred = nnc.predict(X_test)
+nnc_acc = accuracy_score(y_test, y_pred)
+print(f"Neural Network Classifier Accuracy: {nnc_acc:.3f}")

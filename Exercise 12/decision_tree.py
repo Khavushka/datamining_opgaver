@@ -31,11 +31,11 @@ data = load_breast_cancer()
 X = pd.DataFrame(data.data, columns=data.feature_names)
 y = data.target
 
-# Split the data into training and testing sets
+# Split data into training og testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # Train and evaluate a decision tree classifier
-clf_dt = DecisionTreeClassifier(random_state=42)
+clf_dt = DecisionTreeClassifier(ccp_alpha=0.01)
 clf_dt.fit(X_train, y_train)
 y_pred_dt = clf_dt.predict(X_test)
 
