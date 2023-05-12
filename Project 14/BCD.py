@@ -6,6 +6,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.neural_network import MLPClassifier
 import matplotlib.pyplot as plt
+from sklearn import tree
+import seaborn as sns; sns.set(style="ticks", color_codes=True)
 
 data = load_breast_cancer()
 dataset = pd.DataFrame(data=data['data'], columns=data['feature_names'])
@@ -54,3 +56,12 @@ plt.title("Accuracy Scores for Breast Cancer Dataset")
 plt.xlabel("Model")
 plt.ylabel("Accuracy")
 plt.show()
+
+fig = plt.figure(figsize=(25,20))
+_ = tree.plot_tree(clf, 
+                    filled=True)
+
+
+# new data visualisation
+plt.rcParams['font.size']=10
+sns.pairplot(clf, hue='Status', palette='Blues')
