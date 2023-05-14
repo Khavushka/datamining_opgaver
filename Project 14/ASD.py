@@ -1,12 +1,13 @@
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import accuracy_score
 from sklearn import tree
 import matplotlib.pyplot as plt
+import seaborn as sns; sns.set(style="ticks", color_codes=True)
 
 # Load dataset
 df = pd.read_csv("Project 14\ASD.csv")
@@ -53,6 +54,7 @@ df.to_csv("Project 14\ASD_new.csv", index=False)
 # df.fillna(df.mean(), inplace=True)
 # # Split the dataset into training and testing sets
 X = df.drop(columns=["Class/ASD"])
+# X = pd.DataFrame(df.df, columns=df.feature_names)
 y = df["Class/ASD"]
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 print(df.head())
@@ -82,4 +84,13 @@ y_pred = nnc.predict(X_test)
 nnc_acc = accuracy_score(y_test, y_pred)
 print(f"Neural Network Classifier Accuracy: {nnc_acc*100:.3f}")
 
-
+# Vusualization decision tree
+fig, ax = plt.subplots(figsize=(10, 10))
+plot_tree(dtc, ax=ax, feature_names=df.feature_names, class_names=df.target_names, filled=True)
+plt.title("Decision Tree for Breast Cancer Dataset")
+plt.xlabel("Model")
+plt.ylabel("Accuracy")
+plt.show()
+# new data visualisation
+plt.rcParams['font.size']=10
+sns.pairplot(df, hue='Status', palette='Blues')
