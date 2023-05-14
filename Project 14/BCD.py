@@ -33,12 +33,12 @@ f1_dt = f1_score(y_test, y_pred_dt)
 cm_dt = confusion_matrix(y_test, y_pred_dt)
 
 # Vusualization decision tree
-fig, ax = plt.subplots(figsize=(10, 10))
-plot_tree(clf_dt, ax=ax, feature_names=data.feature_names, class_names=data.target_names, filled=True)
-plt.title("Decision Tree for Breast Cancer Dataset")
-plt.xlabel("Model")
-plt.ylabel("Accuracy")
-plt.show()
+# fig, ax = plt.subplots(figsize=(10, 10))
+# plot_tree(clf_dt, ax=ax, feature_names=data.feature_names, class_names=data.target_names, filled=True)
+# plt.title("Decision Tree for Breast Cancer Dataset")
+# plt.xlabel("Model")
+# plt.ylabel("Accuracy")
+# plt.show()
 
 
 # Random forest classifier
@@ -66,13 +66,13 @@ f1_nn = f1_score(y_test, y_pred_nn)
 cm_nn = confusion_matrix(y_test, y_pred_nn)
 
 # Results
-# models = ["Decision Tree", "Random Forest", "Neural Network"]
-# accuracy = [dt_acc, rf_acc, nn_acc]
-# plt.bar(models, accuracy)
-# plt.title("Accuracy Scores for Breast Cancer Dataset")
-# plt.xlabel("Model")
-# plt.ylabel("Accuracy")
-# plt.show()
+models = ["Decision Tree", "Random Forest", "Neural Network"]
+accuracy = [accuracy_dt, accuracy_rf, accuracy_nn]
+plt.bar(models, accuracy)
+plt.title("Accuracy Scores for Breast Cancer Dataset")
+plt.xlabel("Model")
+plt.ylabel("Accuracy")
+plt.show()
 
 print("Decision Tree Classification Results:")
 print(f"Accuracy: {accuracy_dt*100:.3f}")
@@ -99,5 +99,5 @@ print(f"Confusion Matrix:\n{cm_nn}")
 
 
 # new data visualisation
-plt.rcParams['font.size']=10
-sns.pairplot(data, hue='Status', palette='Blues')
+# plt.rcParams['font.size']=10
+# sns.pairplot(data, hue='Status', palette='Blues')
