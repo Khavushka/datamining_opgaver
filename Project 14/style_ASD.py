@@ -1,16 +1,19 @@
 # Styling data--------------------------------------
+import pandas as pd
 data = 'Project 14\ASD_new.csv'
+
 df_data = pd.read_csv(data)
-# df_data.style.hide(axis="index")
-# Create a Styler object from the DataFrame
-styled_df = df_data.style
-
-# Apply styles to the DataFrame
-styled_df = styled_df.set_properties(**{'text-align': 'center'})
-
-# Apply conditional formatting
-styled_df = styled_df.background_gradient(cmap='Blues')
-
-# Render the styled DataFrame
-styled_df
+pd.set_option('display.max_rows', None)  # Set option to display all rows
 # print(df_data)
+
+
+data_info = df_data.describe(include='all').T
+
+# Add additional information to the codebook
+data_info['data_type'] = df_data.dtypes
+data_info['missing_values'] = df_data.isnull().sum()
+data_info['unique_values'] = df_data.nunique()
+
+# Print the codebook
+print("Codebook:")
+print(data_info)
