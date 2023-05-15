@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
 # Load the dataset into a pandas DataFrame
-df = pd.read_csv('Project 14\ASD_new.csv')
+df = pd.read_csv('Project 14\data.csv')
 
 # Split the dataset into training and testing sets
 X = df.drop('target_column', axis=1) # select all columns except the target column

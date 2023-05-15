@@ -12,9 +12,9 @@ import seaborn as sns; sns.set(style="ticks", color_codes=True)
 # Henter data
 data = load_breast_cancer()
 dataset = pd.DataFrame(data=data.data, columns = data.feature_names)
+# dataset['diagnosis'].value_counts()
 # dataset = pd.DataFrame(data=data, columns=data['feature_names'])
-# X = pd.DataFrame(data.data, columns=data.feature_names)
-X = pd.DataFrame(data.data, columns=data.feature)
+X = pd.DataFrame(data.data, columns=data.feature_names)
 y = data.target
 # y = data['target']
 
@@ -35,7 +35,7 @@ cm_dt = confusion_matrix(y_test, y_pred_dt)
 
 # Vusualization decision tree
 fig, ax = plt.subplots(figsize=(10, 10))
-plot_tree(clf_dt, ax=ax, feature_names=data.feature, class_names=data.target_names, filled=True)
+plot_tree(clf_dt, ax=ax, feature_names=data.feature_names, class_names=data.target_names, filled=True)
 plt.title("Decision Tree for Breast Cancer Dataset")
 plt.xlabel("Model")
 plt.ylabel("Accuracy")
@@ -63,6 +63,7 @@ precision_nn = precision_score(y_test, y_pred_nn)
 recall_nn = recall_score(y_test, y_pred_nn)
 f1_nn = f1_score(y_test, y_pred_nn)
 cm_nn = confusion_matrix(y_test, y_pred_nn)
+
 
 # Results
 # M = dataset['relation' == 1]
@@ -97,7 +98,10 @@ print(f"Recall: {recall_nn*100:.3f}")
 print(f"F1-score: {f1_nn*100:.3f}")
 print(f"Confusion Matrix:\n{cm_nn}")
 print(dataset.head().T)
-print(dataset.data_module)
+# print(data.diagnosis.unique())
+B, M = data['diagnosis'].value_counts()
+print(M)
+print(B)
 
 # print("Cancer data set dimensions : {}".format(dataset.shape))
 # Cancer data set dimensions : (569, 32)
@@ -110,3 +114,24 @@ print(dataset.data_module)
 # from sklearn.preprocessing import LabelEncoder
 # labelencoder_Y = LabelEncoder()
 # y = labelencoder_Y.fit_transform(Y)
+
+
+
+
+# https://github.com/MuhammadBilalYar/ann-on-breast-cancer-dataset/blob/master/ml-breast-cancer-data-ann.py
+# from ann_visualizer.visualize import ann_viz
+# from keras.models import Sequential
+# classifier = Sequential()
+# classifier.fit(X_train, y_train, tatch_size=100, nb_epoch=150)
+# y_pred = classifier.predict(X_test)
+# y_pred = (y_pred > 0.5)
+# # Making the Confusion Matrix
+# from sklearn.metrics import confusion_matrix
+# cm = confusion_matrix(y_test, y_pred)
+
+
+# print("[Epoch:150] Our accuracy is {}%".format(((cm[0][0] + cm[1][1])/175)*100))
+
+# sns.heatmap(cm,annot=True)
+# plt.savefig('epoch150.png')
+# ann_viz(classifier, title="Artificial Neural Network (ANN) implementation on Breast Cancer Wisconsin Data Set")
