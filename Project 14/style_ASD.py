@@ -16,22 +16,28 @@ data_info['missing_values'] = df_data.isnull().sum()
 data_info['unique_values'] = df_data.nunique()
 
 # Print the codebook
-print("Codebook:")
+# print("Codebook:")
 print(data_info)
-# Plot a histogram of a numerical column
-x = 'id'
-y = 'age'
+# # Plot a histogram of a numerical column
+# x = 'id'
+# y = 'age'
 
-# Create a scatter plot
-plt.bar(x, y)
+# # Create a scatter plot
+# plt.bar(x, y)
 
-# Set labels and title
-plt.xlabel('X-axis')
-plt.ylabel('Y-axis')
-plt.title('Scatter Plot')
+# # Set labels and title
+# plt.xlabel('X-axis')
+# plt.ylabel('Y-axis')
+# plt.title('Scatter Plot')
 
-# Show the plot
-plt.show()
+# # Show the plot
+# plt.show()
+
+
+#--------------------------------------------------------------------
+
+
+
 
 
 # import pandas as pd

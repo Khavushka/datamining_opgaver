@@ -11,7 +11,7 @@ import seaborn as sns; sns.set(style="ticks", color_codes=True)
 
 # Henter data
 data = load_breast_cancer()
-# dataset = pd.DataFrame(data=data['data'], columns=data['feature_names'])
+dataset = pd.DataFrame(data=data['data'])
 # dataset = pd.DataFrame(data=data, columns=data['feature_names'])
 X = pd.DataFrame(data.data, columns=data.feature_names)
 y = data.target
@@ -39,9 +39,7 @@ plt.title("Decision Tree for Breast Cancer Dataset")
 plt.xlabel("Model")
 plt.ylabel("Accuracy")
 plt.show()
-# new data visualisation
-plt.rcParams['font.size']=10
-sns.pairplot(data, hue='Status', palette='Blues')
+
 
 # Random forest classifier
 clf_rf = RandomForestClassifier(n_estimators=100, max_depth=5, random_state=1)
@@ -54,12 +52,10 @@ recall_rf = recall_score(y_test, y_pred_rf)
 f1_rf = f1_score(y_test, y_pred_rf)
 cm_rf = confusion_matrix(y_test, y_pred_rf)
 
-
-
 # Neural network classifier
-clf_nn = MLPClassifier(hidden_layer_sizes=(100,), random_state=42)
-clf_nn.fit(X_train, y_train)
-y_pred_nn = clf_nn.predict(X_test)
+clf_nn = MLPClassifier(alpha=1e-5, hidden_layer_sizes=(5, 2), random_state=42)
+clf_nn.fit(X_train, y_train) # X_train - dataset | y_train - datasets target
+y_pred_nn = clf_nn.predict(X_test) # Predikter på dataset og target
 
 accuracy_nn = accuracy_score(y_test, y_pred_nn)
 precision_nn = precision_score(y_test, y_pred_nn)
@@ -68,6 +64,8 @@ f1_nn = f1_score(y_test, y_pred_nn)
 cm_nn = confusion_matrix(y_test, y_pred_nn)
 
 # Results
+# M = dataset['relation' == 1]
+# B = dataset['relation' == 0]
 # models = ["Decision Tree", "Random Forest", "Neural Network"]
 # accuracy = [accuracy_dt, accuracy_rf, accuracy_nn]
 # plt.bar(models, accuracy)
@@ -76,23 +74,37 @@ cm_nn = confusion_matrix(y_test, y_pred_nn)
 # plt.ylabel("Accuracy")
 # plt.show()
 
+
 print("Decision Tree Classification Results:")
 print(f"Accuracy: {accuracy_dt*100:.3f}")
-print(f"Precision: {precision_dt:.3f}")
-print(f"Recall: {recall_dt:.3f}")
-print(f"F1-score: {f1_dt:.3f}")
+print(f"Precision: {precision_dt*100:.3f}")
+print(f"Recall: {recall_dt*100:.3f}")
+print(f"F1-score: {f1_dt*100:.3f}")
 print(f"Confusion Matrix:\n{cm_dt}\n")
 
 print("Random Forest Classification Results:")
-print(f"Accuracy: {accuracy_rf:.3f}")
-print(f"Precision: {precision_rf:.3f}")
-print(f"Recall: {recall_rf:.3f}")
-print(f"F1-score: {f1_rf:.3f}")
+print(f"Accuracy: {accuracy_rf*100:.3f}")
+print(f"Precision: {precision_rf*100:.3f}")
+print(f"Recall: {recall_rf*100:.3f}")
+print(f"F1-score: {f1_rf*100:.3f}")
 print(f"Confusion Matrix:\n{cm_rf}\n")
 
 print("Neural Network Classification Results:")
-print(f"Accuracy: {accuracy_nn:.3f}")
-print(f"Precision: {precision_nn:.3f}")
-print(f"Recall: {recall_nn:.3f}")
-print(f"F1-score: {f1_nn:.3f}")
+print(f"Accuracy: {accuracy_nn*100:.3f}")
+print(f"Precision: {precision_nn*100:.3f}")
+print(f"Recall: {recall_nn*100:.3f}")
+print(f"F1-score: {f1_nn*100:.3f}")
 print(f"Confusion Matrix:\n{cm_nn}")
+# print(dataset.head())
+
+# print("Cancer data set dimensions : {}".format(dataset.shape))
+# Cancer data set dimensions : (569, 32)
+
+# new data visualisation
+# plt.rcParams['font.size']=10
+# sns.pairplot(data, hue='Status', palette='Blues')
+
+#Encoding categorical data values
+# from sklearn.preprocessing import LabelEncoder
+# labelencoder_Y = LabelEncoder()
+# y = labelencoder_Y.fit_transform(Y)

@@ -70,6 +70,14 @@ y_pred = dtc.predict(X_test)
 dtc_acc = accuracy_score(y_test, y_pred)
 print(f"Decision Tree Classifier Accuracy: {dtc_acc*100:.3f}")
 
+# # Vusualization decision tree
+# fig, ax = plt.subplots(figsize=(10, 10))
+# plot_tree(dtc, ax=ax, feature_names=df.feature_names, class_names=df.target_names, filled=True)
+# plt.title("Decision Tree for Breast Cancer Dataset")
+# plt.xlabel("Model")
+# plt.ylabel("Accuracy")
+# plt.show()
+
 # Train and evaluate Random Forest Classifier
 rfc = RandomForestClassifier()
 rfc.fit(X_train, y_train)
@@ -84,22 +92,11 @@ y_pred = nnc.predict(X_test)
 nnc_acc = accuracy_score(y_test, y_pred)
 print(f"Neural Network Classifier Accuracy: {nnc_acc*100:.3f}")
 
-# Vusualization decision tree
-# fig, ax = plt.subplots(figsize=(10, 10))
-# plot_tree(dtc, ax=ax, feature_names=df.feature_names, class_names=df.target_names, filled=True)
-# plt.title("Decision Tree for Breast Cancer Dataset")
-# plt.xlabel("Model")
-# plt.ylabel("Accuracy")
-# plt.show()
-# # new data visualisation
-# plt.rcParams['font.size']=10
-# sns.pairplot(df, hue='Status', palette='Blues')
-
 # Results
-# models = ["Decision Tree", "Random Forest", "Neural Network"]
-# accuracy = [dtc, rfc, nnc]
-# plt.bar(models, accuracy)
-# plt.title("Accuracy Scores for Breast Cancer Dataset")
-# plt.xlabel("Model")
-# plt.ylabel("Accuracy")
-# plt.show()
+models = ["Decision Tree", "Random Forest", "Neural Network"]
+accuracy = [dtc, rfc, nnc]
+plt.bar(models, accuracy)
+plt.title("Accuracy Scores for Breast Cancer Dataset")
+plt.xlabel("Model")
+plt.ylabel("Accuracy")
+plt.show()
