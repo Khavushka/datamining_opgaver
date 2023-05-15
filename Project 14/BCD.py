@@ -98,10 +98,10 @@ print(f"Recall: {recall_nn*100:.3f}")
 print(f"F1-score: {f1_nn*100:.3f}")
 print(f"Confusion Matrix:\n{cm_nn}")
 print(dataset.head().T)
-# print(data.diagnosis.unique())
-B, M = data['diagnosis'].value_counts()
-print(M)
-print(B)
+
+# print(dataset.value_counts())
+print(dataset.groupby.mean())
+
 
 # print("Cancer data set dimensions : {}".format(dataset.shape))
 # Cancer data set dimensions : (569, 32)
