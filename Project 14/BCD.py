@@ -11,9 +11,10 @@ import seaborn as sns; sns.set(style="ticks", color_codes=True)
 
 # Henter data
 data = load_breast_cancer()
-dataset = pd.DataFrame(data=data['data'])
+dataset = pd.DataFrame(data=data.data, columns = data.feature_names)
 # dataset = pd.DataFrame(data=data, columns=data['feature_names'])
-X = pd.DataFrame(data.data, columns=data.feature_names)
+# X = pd.DataFrame(data.data, columns=data.feature_names)
+X = pd.DataFrame(data.data, columns=data.feature)
 y = data.target
 # y = data['target']
 
@@ -34,7 +35,7 @@ cm_dt = confusion_matrix(y_test, y_pred_dt)
 
 # Vusualization decision tree
 fig, ax = plt.subplots(figsize=(10, 10))
-plot_tree(clf_dt, ax=ax, feature_names=data.feature_names, class_names=data.target_names, filled=True)
+plot_tree(clf_dt, ax=ax, feature_names=data.feature, class_names=data.target_names, filled=True)
 plt.title("Decision Tree for Breast Cancer Dataset")
 plt.xlabel("Model")
 plt.ylabel("Accuracy")
@@ -53,7 +54,7 @@ f1_rf = f1_score(y_test, y_pred_rf)
 cm_rf = confusion_matrix(y_test, y_pred_rf)
 
 # Neural network classifier
-clf_nn = MLPClassifier(alpha=1e-5, hidden_layer_sizes=(5, 2), random_state=42)
+clf_nn = MLPClassifier(hidden_layer_sizes=(100, ), random_state=42)
 clf_nn.fit(X_train, y_train) # X_train - dataset | y_train - datasets target
 y_pred_nn = clf_nn.predict(X_test) # Predikter på dataset og target
 
@@ -95,7 +96,8 @@ print(f"Precision: {precision_nn*100:.3f}")
 print(f"Recall: {recall_nn*100:.3f}")
 print(f"F1-score: {f1_nn*100:.3f}")
 print(f"Confusion Matrix:\n{cm_nn}")
-# print(dataset.head())
+print(dataset.head().T)
+print(dataset.data_module)
 
 # print("Cancer data set dimensions : {}".format(dataset.shape))
 # Cancer data set dimensions : (569, 32)
