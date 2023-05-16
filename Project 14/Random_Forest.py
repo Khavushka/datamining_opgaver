@@ -23,9 +23,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-
-
-
 def run_default_rf(data, target, forest_size=25, verbose=True):
 	"""This method runs random forest with default parameters on 
 	the data set that is passed into it. The accuracy of the test
@@ -76,9 +73,6 @@ def run_default_NB(data, target):
 	
 	return (total_error/N_SPLITS)
 		
-	
-
-	
 
 def visualize_feature_importances(rf):
 	"""This function plots all feature importances within the data
@@ -332,19 +326,9 @@ def eval_precision_recall(forest_size, data, classif):
 	prec_rec = classification_report(result, y_test)
 	print(prec_rec)
 
-
-
-
-
-
-	
-
-
 if __name__ == "__main__":
 	"""Run all code within this main body"""
 	
-
-
 	# load in data set in form of (data, target)
 	data, classif = load_breast_cancer(return_X_y=True)
 	print(data.shape)

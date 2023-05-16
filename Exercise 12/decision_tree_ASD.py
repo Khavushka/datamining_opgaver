@@ -7,8 +7,8 @@ from sklearn.metrics import accuracy_score
 df = pd.read_csv('Project 14\data.csv')
 
 # Split the dataset into training and testing sets
-X = df.drop('target_column', axis=1) # select all columns except the target column
-y = df['target_column'] # select only the target column
+X = df.drop('id', axis=1) # select all columns except the target column
+y = df['diagnosis'] # select only the target column
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
 # Create a decision tree classifier and fit it to the training data
