@@ -94,8 +94,3 @@ plt.show()
 
 # saving model
 classifier.save('neural_network.h5')
-import keras
-from keras.models import load_model
-
-# Load the model from .h5 file
-model = load_model('neural_network.h5')
