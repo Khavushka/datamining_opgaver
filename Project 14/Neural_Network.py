@@ -15,7 +15,7 @@ from sklearn.metrics import accuracy_score
 # load dataset
 df = pd.read_csv('Project 14/data.csv')
 value_counts = df['diagnosis'].value_counts()
-
+print(value_counts)
 # independent variables
 x = df.drop('diagnosis', axis=1)
 # dependent variables

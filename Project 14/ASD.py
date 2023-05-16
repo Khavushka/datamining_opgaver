@@ -93,10 +93,10 @@ nnc_acc = accuracy_score(y_test, y_pred)
 print(f"Neural Network Classifier Accuracy: {nnc_acc*100:.3f}")
 
 # Results
-models = ["Decision Tree", "Random Forest", "Neural Network"]
-accuracy = [dtc, rfc, nnc]
-plt.bar(models, accuracy)
-plt.title("Accuracy Scores for Breast Cancer Dataset")
-plt.xlabel("Model")
-plt.ylabel("Accuracy")
-plt.show()
+# models = ["Decision Tree", "Random Forest", "Neural Network"]
+# accuracy = [dtc, rfc, nnc]
+# plt.bar(models, accuracy)
+# plt.title("Accuracy Scores for Breast Cancer Dataset")
+# plt.xlabel("Model")
+# plt.ylabel("Accuracy")
+# plt.show()
