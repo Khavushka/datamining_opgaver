@@ -359,37 +359,3 @@ if __name__ == "__main__":
 	print("\n\n")
 	best_rf = test_rf_sizes([25, 50, 75, 100, 125, 150], data, classif)
 	eval_precision_recall(125, data, classif)
-
-	'''
-	feat_np = np.array(informed_rf.feature_importances_, copy=True)
-	mean_imp = np.mean(feat_np)
-	bad_indices = []
-	for ind in range(len(informed_rf.feature_importances_)):
-		if(feat_np[ind] < mean_imp/1.0):
-			bad_indices.append(ind)
-	data = filter_features(data, bad_indices)
-	
-	visualize_pairplot(data, classif)
-	'''
-
-	'''
-	data = gen_polynomial_feats(data)
-	
-	informed_rf = run_default_rf(data, classif)[0]
-	print(informed_rf.feature_importances_)
-	feat_np = np.array(informed_rf.feature_importances_, copy=True)
-	mean_imp = np.mean(feat_np)
-	bad_indices = []
-	for ind in range(len(informed_rf.feature_importances_)):
-		if(feat_np[ind] < mean_imp):
-			bad_indices.append(ind)
-	data = filter_features(data, bad_indices)
-	print(data.shape)
-	run_default_rf(data, classif)	
-	new_rf = run_default_rf(data, classif, forest_size=100)[0]
-	print(new_rf.feature_importances_)
-	feat_imp = np.array(new_rf.feature_importances_, copy=True)
-	bad_indices = np.argwhere(feat_imp < .015)
-	data = filter_features(data, bad_indices)
-	run_default_rf(data, classif, forest_size=100)	
-	'''
