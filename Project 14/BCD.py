@@ -64,19 +64,6 @@ recall_nn = recall_score(y_test, y_pred_nn)
 f1_nn = f1_score(y_test, y_pred_nn)
 cm_nn = confusion_matrix(y_test, y_pred_nn)
 
-
-# Results
-# M = dataset['relation' == 1]
-# B = dataset['relation' == 0]
-# models = ["Decision Tree", "Random Forest", "Neural Network"]
-# accuracy = [accuracy_dt, accuracy_rf, accuracy_nn]
-# plt.bar(models, accuracy)
-# plt.title("Accuracy Scores for Breast Cancer Dataset")
-# plt.xlabel("Model")
-# plt.ylabel("Accuracy")
-# plt.show()
-
-
 print("Decision Tree Classification Results:")
 print(f"Accuracy: {accuracy_dt*100:.2f}"+'%')
 print(f"Precision: {precision_dt*100:.2f}"+'%')
@@ -101,37 +88,3 @@ print(dataset.head().T)
 
 # print(dataset.value_counts())
 print(dataset.groupby.mean())
-
-
-# print("Cancer data set dimensions : {}".format(dataset.shape))
-# Cancer data set dimensions : (569, 32)
-
-# new data visualisation
-# plt.rcParams['font.size']=10
-# sns.pairplot(data, hue='Status', palette='Blues')
-
-#Encoding categorical data values
-# from sklearn.preprocessing import LabelEncoder
-# labelencoder_Y = LabelEncoder()
-# y = labelencoder_Y.fit_transform(Y)
-
-
-
-
-# https://github.com/MuhammadBilalYar/ann-on-breast-cancer-dataset/blob/master/ml-breast-cancer-data-ann.py
-# from ann_visualizer.visualize import ann_viz
-# from keras.models import Sequential
-# classifier = Sequential()
-# classifier.fit(X_train, y_train, tatch_size=100, nb_epoch=150)
-# y_pred = classifier.predict(X_test)
-# y_pred = (y_pred > 0.5)
-# # Making the Confusion Matrix
-# from sklearn.metrics import confusion_matrix
-# cm = confusion_matrix(y_test, y_pred)
-
-
-# print("[Epoch:150] Our accuracy is {}%".format(((cm[0][0] + cm[1][1])/175)*100))
-
-# sns.heatmap(cm,annot=True)
-# plt.savefig('epoch150.png')
-# ann_viz(classifier, title="Artificial Neural Network (ANN) implementation on Breast Cancer Wisconsin Data Set")
