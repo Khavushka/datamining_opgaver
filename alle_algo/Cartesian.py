@@ -12,7 +12,7 @@ def main():
     print("Cartesian distance:", distance)
 
     # Calculate distances between multiple points
-    points = [(0, 0), (1, 0), (1, 1)]
+    points = [(0, 0), (0, 2), (1, 1)]
 
     print("Distances between points:")
     for i in range(len(points) - 1):
