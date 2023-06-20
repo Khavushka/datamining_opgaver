@@ -67,3 +67,46 @@ The same but with ABCD and support 4
 # # Print the closed patterns
 # for pattern, support in closed_patterns.items():
 #     print(f"Pattern: {pattern}, Support: {support}")
+
+
+'''
+# Consider the following set of frequent 3-itemsets: {1, 2, 3}, {1, 2, 4}, {1, 2, 5}, {1, 3, 4}, {1, 3, 5}, {2, 3, 4}, {2, 3, 5}, {3, 4, 5}
+# assume that there are only five items in the data set 
+from itertools import combinations
+
+# Set of frequent 3-itemsets
+frequent_itemsets = [
+    {1, 2, 3},
+    {1, 2, 4},
+    {1, 2, 5},
+    {1, 3, 4},
+    {1, 3, 5},
+    {2, 3, 4},
+    {2, 3, 5},
+    {3, 4, 5}
+]
+
+# List of all possible 2-item combinations
+all_combinations = list(combinations(range(1, 6), 2))
+
+# Find the closed frequent itemsets
+closed_itemsets = []
+for itemset in frequent_itemsets:
+    is_closed = True
+    for other_itemset in frequent_itemsets:
+        if itemset != other_itemset and itemset.issubset(other_itemset):
+            is_closed = False
+            break
+    if is_closed:
+        closed_itemsets.append(itemset)
+
+# Find the support count for each closed itemset
+support_counts = {}
+for itemset in closed_itemsets:
+    support_counts[itemset] = sum(1 for transaction in frequent_itemsets if itemset.issubset(transaction))
+
+# Print the closed frequent itemsets with their support counts
+for itemset, support in support_counts.items():
+    print(f"Itemset: {itemset}, Support: {support}")
+
+'''
