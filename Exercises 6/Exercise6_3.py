@@ -4,7 +4,7 @@ from collections import Counter
 
 # Define the data points and their labels
 X = np.array([[9, 3],[8, 2],[7,2],[7,4],[6, 1],[6,3],[6,5],[6, 6],[5,4],[5, 5],[5, 7],[4, 4],[4, 6], [2, 5], [2, 8]])
-y = ['rectangle', 'rectangle', 'rectangle', 'rectangle', 'rectangle', 'rectangle', 'circle', 'circle', 'rectangle', 'circle', 'circle', 'circle', 'circle', 'circle', 'circle']
+y = ['square', 'square', 'square', 'square', 'square', 'square', 'circle', 'circle', 'square', 'circle', 'circle', 'circle', 'circle', 'circle', 'circle']
 # y = np.array([0,0,0,0,0,1,1,0,1,1,1,1,1,1])
 
 # Define the test point
