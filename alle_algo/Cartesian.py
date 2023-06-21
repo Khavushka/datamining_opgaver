@@ -1,25 +1,39 @@
 import math
 
-def cartesian_distance(x1, y1, x2, y2):
-    return math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+# Coordinates of the points
+A = (0, 0)
+B = (0, 1)
+C = (1, 0)
 
-def main():
-    # Example usage
-    x1, y1 = 0, 0
-    x2, y2 = 1, 1
+# Calculate distances using different distance measures
 
-    distance = cartesian_distance(x1, y1, x2, y2)
-    print("Cartesian distance:", distance)
+# L_0.8 distance measure
+d_AB_08 = ((abs(A[0] - B[0]) ** 0.8) + (abs(A[1] - B[1]) ** 0.8)) ** (1 / 0.8)
+d_AC_08 = ((abs(A[0] - C[0]) ** 0.8) + (abs(A[1] - C[1]) ** 0.8)) ** (1 / 0.8)
 
-    # Calculate distances between multiple points
-    points = [(0, 0), (0, 2), (1, 1)]
+# L_1 distance measure
+d_AB_1 = abs(A[0] - B[0]) + abs(A[1] - B[1])
+d_AC_1 = abs(A[0] - C[0]) + abs(A[1] - C[1])
 
-    print("Distances between points:")
-    for i in range(len(points) - 1):
-        x1, y1 = points[i]
-        x2, y2 = points[i+1]
-        distance = cartesian_distance(x1, y1, x2, y2)
-        print(f"Distance from {points[i]} to {points[i+1]}: {distance}")
+# L_2 (Euclidean) distance measure
+d_AB_2 = math.sqrt((A[0] - B[0]) ** 2 + (A[1] - B[1]) ** 2)
+d_AC_2 = math.sqrt((A[0] - C[0]) ** 2 + (A[1] - C[1]) ** 2)
 
-if __name__ == "__main__":
-    main()
+# L_infinity (Chebyshev) distance measure
+d_AB_inf = max(abs(A[0] - B[0]), abs(A[1] - B[1]))
+d_AC_inf = max(abs(A[0] - C[0]), abs(A[1] - C[1]))
+
+# Print the distances
+print("Distances using different distance measures:")
+print("L_0.8:")
+print("Distance between A and B:", d_AB_08)
+print("Distance between A and C:", d_AC_08)
+print("L_1:")
+print("Distance between A and B:", d_AB_1)
+print("Distance between A and C:", d_AC_1)
+print("L_2:")
+print("Distance between A and B:", d_AB_2)
+print("Distance between A and C:", d_AC_2)
+print("L_infinity:")
+print("Distance between A and B:", d_AB_inf)
+print("Distance between A and C:", d_AC_inf)
