@@ -2,7 +2,7 @@ import math
 
 # Coordinates of the points
 A = (0, 0)
-B = (0, 1)
+B = (0, 2)
 C = (1, 1)
 
 # Calculate distances using different distance measures
