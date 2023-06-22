@@ -1,48 +1,51 @@
 # Given the following dataset and Manhattan distance as distance function, not counting the query object in its neighborhood, which of the subsets are in correct decreasing order w.r.t. kNN outlier score with k=2?
 
-import math
+def manhattan_distance(x1, x2):
+    return abs(x1[0] - x2[0]) + abs(x1[1] - x2[1])
 
-def manhattan_distance(point1, point2):
-    return abs(point1[0] - point2[0]) + abs(point1[1] - point2[1])
+def kNN_outlier_score(dataset, query, k):
+    distances = [manhattan_distance(query, data) for data in dataset]
+    sorted_indices = sorted(range(len(distances)), key=lambda x: distances[x])
+    k_nearest_distances = distances[1:k+1]  # Exclude the query object itself
+    average_distance = sum(k_nearest_distances) / k
+    kth_nearest_distance = distances[k]
+    outlier_score = kth_nearest_distance - average_distance
+    return outlier_score
 
-def kNN_outlier_score(data, k):
-    outlier_scores = []
+# Define the dataset
+dataset = [
+    [1, 7],  # B
+    [3, 7],  # H
+    [3, 4],  # C
+    [4, 7],  # E
+    [4, 6],  # G
+    [5, 5],  # F
+    [5, 2],  # A
+    [6, 6]   # D
+]
 
-    for query_point in data:
-        distances = []
-        for point in data:
-            if point != query_point:
-                distances.append(manhattan_distance(query_point, point))
-        
-        distances.sort()
-        k_nearest_distances = distances[:k]
-        outlier_scores.append(sum(k_nearest_distances) / k)
-    
-    return outlier_scores
+# Define the query object
+query = [5, 6]
 
-# Dataset
-data = [(5, 2), (6, 6), (5, 5), (4, 6), (4, 7), (3, 4), (3, 7), (1, 7)]
+# Calculate the outlier scores for each option
+option1 = [kNN_outlier_score(dataset, dataset[1], 2),
+           kNN_outlier_score(dataset, dataset[7], 2),
+           kNN_outlier_score(dataset, dataset[0], 2)]
 
-k = 2
+option2 = [kNN_outlier_score(dataset, dataset[5], 2),
+           kNN_outlier_score(dataset, dataset[0], 2),
+           kNN_outlier_score(dataset, dataset[4], 2)]
 
-outlier_scores = kNN_outlier_score(data, k)
+option3 = [kNN_outlier_score(dataset, dataset[5], 2),
+           kNN_outlier_score(dataset, dataset[4], 2),
+           kNN_outlier_score(dataset, dataset[3], 2)]
 
-# Sort the points based on outlier scores in decreasing order
-sorted_data = [point for _, point in sorted(zip(outlier_scores, data), reverse=True)]
+# Check the order of the outlier scores
+if sorted(option1, reverse=True) == option1:
+    print("Option 1 is in correct decreasing order.")
 
-# Given options
-option1 = [(5, 2), (1, 7), (6, 6)]
-option2 = [(3, 4), (6, 6), (4, 7)]
-option3 = [(3, 4), (4, 7), (4, 6)]
+if sorted(option2, reverse=True) == option2:
+    print("Option 2 is in correct decreasing order.")
 
-# Check if the sorted_data matches any of the given options
-if sorted_data == option1:
-    print("Option 1 is correct.")
-elif sorted_data == option2:
-    print("Option 2 is correct.")
-elif sorted_data == option3:
-    print("Option 3 is correct.")
-else:
-    print("None of the given options is correct.")
-
-
+if sorted(option3, reverse=True) == option3:
+    print("Option 3 is in correct decreasing order.")
