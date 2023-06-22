@@ -5,10 +5,10 @@ pr_h3_given_d = 0.2
 
 # Step 2: Calculate the class probabilities given each classifier's prediction
 pr_plus_given_h1 = 0.6
-pr_minus_given_h1 = 0.2
-pr_plus_given_h2 = 0.9
-pr_minus_given_h2 = 0.4
-pr_plus_given_h3 = 0.8
+pr_plus_given_h2 = 0.2
+pr_plus_given_h3 = 0.9
+pr_minus_given_h1 = 0.4
+pr_minus_given_h2 = 0.8
 pr_minus_given_h3 = 0.1
 
 # Step 3: Calculate the overall class probabilities
