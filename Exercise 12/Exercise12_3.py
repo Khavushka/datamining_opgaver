@@ -10,8 +10,17 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score
 
 # Load Iris dataset
-iris = load_iris()
-X = iris.data
+iris = [
+    [1, 6],  # B
+    [1, 4],  # C
+    [3, 7],  # H
+    [4, 5],  # G
+    [4, 7],  # E
+    [5, 5],  # F
+    [6, 6],  # D
+    [7, 2]   # A
+]
+X = iris
 y = iris.target
 
 # Split dataset into training and testing sets
